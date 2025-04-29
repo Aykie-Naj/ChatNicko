@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Educational Videos</title>
+    <style>
+        body {
+            background-color: #f9fafb; /* Slightly lighter background for better contrast */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #111827; /* Darker text for better readability */
+        }
+        .flex {
+            display: flex;
+            height: 100vh; /* Ensure full height of the viewport */
+        }
+        .sidebar {
+            background-color: #1f2937; /* Darker sidebar for better contrast */
+            color: #ffffff;
+            width: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 1.5rem;
+            height: 100%; /* Full height for sidebar */
+        }
+        .sidebar button {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.5rem; /* Slightly larger icons for better visibility */
+            cursor: pointer;
+        }
+        .sidebar button:hover {
+            color: #6b7280; /* Softer hover effect */
+        }
+        .main {
+            flex: 1;
+            padding: 2rem; /* Increased padding for better spacing */
+            overflow-y: auto; /* Ensure content is scrollable */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem; /* Increased spacing for better layout */
+        }
+        .header .search input {
+            width: 100%; /* Full width for better usability */
+            max-width: 300px; /* Limit width for larger screens */
+        }
+        .featured, .grid {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap; /* Ensure responsiveness */
+        }
+        .featured img, .grid img {
+            border-radius: 0.5rem;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+            transition: transform 0.2s, box-shadow 0.2s; /* Add hover effects */
+        }
+        .featured img:hover, .grid img:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+        }
+        .featured .info, .grid .info {
+            margin-top: 0.75rem;
+        }
+        .featured .info span {
+            background-color: #10b981;
+            color: #ffffff;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: bold; /* Highlight "New" tag */
+        }
+        .featured .info h2, .grid .info h2 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .featured .info p, .grid .info p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        .grid .item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 600px; /* Limit width for better layout */
+        }
+        .grid .item img {
+            width: 9rem;
+            height: 6rem;
+            object-fit: cover; /* Ensure consistent image display */
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Stack header elements on smaller screens */
+                gap: 1rem;
+            }
+            .header .profile {
+                justify-content: center; /* Center profile info */
+            }
+            .grid .item {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                align-items: center;
+            }
+            .grid .item img {
+                width: 100%; /* Full width for smaller screens */
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <button><span>&#8962;</span></button>
+            <button><span>&#9881;</span></button>
+            <button><span>&#8853;</span></button>
+            <button><span>&#128197;</span></button>
+            <button><span>&#9993;</span></button>
+        </aside>
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Header -->
+            <header class="header">
+                <div class="search">
+                    <span>&#128269;</span>
+                    <input type="text" placeholder="Search Skills" />
+                </div>
+                <div class="profile">
+                    <span>Clover Pace</span>
+                    <span>&#128100;</span>
+                </div>
+            </header>
+            <!-- Content -->
+            <section>
+                <!-- Featured Videos -->
+                <div class="featured">
+                    <div>
+                        <img src="https://storage.googleapis.com/a1aa/image/pWF2GFD3CwSD347H5x8BMnvELaF0BJQ95fNfBBzmbUQ.jpg" alt="The Language of Line" />
+                        <div class="info">
+                            <span>New</span>
+                            <h2>The Language of Line, part 3 of The Drawing Laboratory</h2>
+                            <p>3h 5m</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://storage.googleapis.com/a1aa/image/V0AILyrVFEM161iCXU54Vu0vgCLQBxEdLRyahigtGPw.jpg" alt="Teaching HTML" />
+                        <div class="info">
+                            <h2>Teaching HTML</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other Videos -->
+                <div class="grid">
+                    <div class="item">
+                        <img src="https://storage.googleapis.com/a1aa/image/kbi359C4qFRd0OdvIdcO0XemKdjGC1RYITMV70-k_iQ.jpg" alt="Creative Toolkit" />
+                        <div class="info">
+                            <h2>Creative Toolkit: Techniques to Spark Original Ideas</h2>
+                            <p>55m</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="https://storage.googleapis.com/a1aa/image/c0znBXm98o5rmOeA1bsFXRq6pdaqrwXvqBozPy2CRMk.jpg" alt="Figma UX Design Essentials" />
+                        <div class="info">
+                            <h2>Figma UX Design Essentials</h2>
+                            <p>1h 55m</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

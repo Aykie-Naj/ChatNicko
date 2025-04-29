@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Mentors</title>
+    <style>
+        body {
+            background-color: #f9fafb; /* Slightly lighter background for better contrast */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #111827; /* Darker text for better readability */
+        }
+        .flex {
+            display: flex;
+            height: 100vh; /* Ensure full height of the viewport */
+        }
+        .sidebar {
+            background-color: #111827; /* Darker sidebar for better contrast */
+            color: #ffffff;
+            width: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 1rem;
+            height: 100%; /* Make sidebar span the full height */
+        }
+        .sidebar img {
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        .sidebar i {
+            font-size: 1.5rem; /* Slightly larger icons for better visibility */
+            cursor: pointer;
+        }
+        .sidebar i:hover {
+            color: #6b7280; /* Softer hover effect */
+        }
+        .main-content {
+            flex: 1;
+            padding: 2rem; /* Increased padding for better spacing */
+            overflow-y: auto; /* Ensure content is scrollable */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .header .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header .search-bar input {
+            width: 100%; /* Full width for better usability */
+            max-width: 300px; /* Limit width for larger screens */
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 9999px;
+            outline: none;
+        }
+        .header .search-bar button {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+        }
+        .header .search-bar button:hover {
+            background-color: #374151;
+        }
+        .header .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header .user-info img {
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust for smaller screens */
+            gap: 1.5rem;
+        }
+        .mentor-card {
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s; /* Add hover effects */
+        }
+        .mentor-card:hover {
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+        }
+        .mentor-card img {
+            border-radius: 50%;
+            width: 3.75rem;
+            height: 3.75rem;
+            margin-bottom: 1rem; /* Add spacing below image */
+        }
+        .mentor-card .mentor-info {
+            margin-left: 0; /* Align text properly */
+            text-align: center; /* Center-align text */
+        }
+        .mentor-card .mentor-info h3 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .mentor-card .mentor-info p {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin: 0.5rem 0;
+        }
+        .mentor-card .tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .mentor-card .tags span {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: bold; /* Highlight tags */
+        }
+        .mentor-card .actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .mentor-card .actions i {
+            font-size: 1rem;
+            color: #3b82f6;
+            cursor: pointer;
+        }
+        .mentor-card .actions i:hover {
+            color: #2563eb;
+        }
+        .see-more {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .see-more label {
+            background: none;
+            color: #3b82f6;
+            font-size: 0.875rem;
+            border: none;
+            cursor: pointer;
+            font-weight: bold; /* Make "See more" more prominent */
+        }
+        .see-more label:hover {
+            text-decoration: underline;
+            color: #1d4ed8; /* Add hover color */
+        }
+        .hidden {
+            display: none;
+        }
+        #see-more-toggle:checked ~ .hidden-content {
+            display: grid;
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Stack header elements on smaller screens */
+                gap: 1rem;
+            }
+            .header .user-info {
+                justify-content: center; /* Center user info */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="https://storage.googleapis.com/a1aa/image/203jKg3acZCnUAjzfPRleuYOCTXj8FSxTCyt0_Kj9PU.jpg" alt="Logo" />
+            <i>&#9993;</i>
+            <i>&#128197;</i>
+            <i>&#8853;</i>
+            <i>&#9881;</i>
+            <i>&#10162;</i>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search Mentor" />
+                    <button>Browse</button>
+                </div>
+                <div class="user-info">
+                    <i>&#128276;</i>
+                    <img src="https://storage.googleapis.com/a1aa/image/CBgm4brCowfiJFsiw1W-BEEZXiH8TGd_zA-Q_PLQDXk.jpg" alt="User Avatar" />
+                    <span>Juan T.</span>
+                </div>
+            </header>
+            <!-- Mentors Section -->
+            <section>
+                <h1 class="section-title">Mentors</h1>
+                <h2 class="section-subtitle">Technology</h2>
+                <div class="mentor-grid">
+                    <!-- Mentor Card -->
+                    <div class="mentor-card">
+                        <div class="flex">
+                            <img src="https://storage.googleapis.com/a1aa/image/XbUdD7GMx8vdySF8qffcwMtyzedWlSOupeN71LBLo5U.jpg" alt="Dancel Tayaban" />
+                            <div class="mentor-info">
+                                <h3>Dancel Tayaban</h3>
+                                <p>Information Technology<br />College of Information Science</p>
+                                <div class="tags">
+                                    <span>CSS</span>
+                                    <span>Cyber Security</span>
+                                    <span>Basic Programming</span>
+                                </div>
+                                <div class="actions">
+                                    <i>&#9742;</i>
+                                    <i>&#9993;</i>
+                                    <i>&#9733;</i>
+                                    <i>&#9733;</i>
+                                    <i>&#9733;</i>
+                                    <i>&#9733;</i>
+                                    <i>&#9734;</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat for other mentor cards -->
+                    <!-- ...existing code for other mentor cards... -->
+                </div>
+                <input type="checkbox" id="see-more-toggle" class="hidden" />
+                <div class="mentor-grid hidden-content">
+                    <!-- Additional Mentor Cards -->
+                    <div class="mentor-card">
+                        <div class="flex">
+                            <img src="https://storage.googleapis.com/a1aa/image/extra-mentor.jpg" alt="Extra Mentor" />
+                            <div class="mentor-info">
+                                <h3>Extra Mentor</h3>
+                                <p>Additional Information<br />Extra College</p>
+                                <div class="tags">
+                                    <span>Extra Skill</span>
+                                    <span>Another Skill</span>
+                                </div>
+                                <div class="actions">
+                                    <i>&#9742;</i>
+                                    <i>&#9993;</i>
+                                    <i>&#9733;</i>
+                                    <i>&#9733;</i>
+                                    <i>&#9733;</i>
+                                    <i>&#9734;</i>
+                                    <i>&#9734;</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ...additional mentor cards... -->
+                </div>
+                <div class="see-more">
+                    <label for="see-more-toggle">See more...</label>
+                </div>
+            </section>
+            <!-- Arts Section -->
+            <section class="mt-8">
+                <h2 class="section-subtitle">Arts</h2>
+                <div class="mentor-grid">
+                    <!-- Arts Mentor Card -->
+                    <div class="mentor-card">
+                        <div class="flex">
+                            <img src="https://storage.googleapis.com/a1aa/image/MRcA3u-QxJzyHU_65lPTPGpXUl-vmX03kQ2BjLz5xWo.jpg" alt="Orion M. star" />
+                            <div class="mentor-info">
+                                <h3>Orion M. star</h3>
+                                <p>Language</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat for other arts mentor cards -->
+                    <!-- ...existing code for other arts mentor cards... -->
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

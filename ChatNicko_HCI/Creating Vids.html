@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Creating Videos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9fafb; /* Lighter background for better contrast */
+            color: #111827; /* Darker text for readability */
+            margin: 0;
+        }
+        .sidebar {
+            background-color: #1f2937; /* Darker sidebar for better contrast */
+            color: #ffffff;
+            height: 100vh; /* Ensure full height of the viewport */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            position: fixed; /* Fix sidebar position */
+            top: 0;
+            left: 0;
+            width: 4rem; /* Fixed width for consistency */
+        }
+        .sidebar-icon {
+            font-size: 1.75rem; /* Slightly larger icons for better visibility */
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .sidebar-icon:hover {
+            color: #60a5fa; /* Softer hover effect */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem; /* Increased spacing for better layout */
+        }
+        .header-profile img {
+            border-radius: 50%;
+            margin-right: 1rem;
+            width: 3rem;
+            height: 3rem;
+        }
+        .create-post {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .create-post input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .create-post input:focus {
+            border-color: #60a5fa; /* Highlight input on focus */
+        }
+        .create-post-buttons button {
+            display: flex;
+            align-items: center;
+            color: #4b5563; /* Tailwind's gray-600 */
+            transition: color 0.3s ease;
+        }
+        .create-post-buttons button:hover {
+            color: #60a5fa; /* Softer hover effect */
+        }
+        .post {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .post img {
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            object-fit: cover; /* Ensure consistent image display */
+        }
+        .recent-posts {
+            background-color: #e0f2fe; /* Tailwind's blue-100 */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            color: #374151; /* Tailwind's gray-700 */
+        }
+        .flex-1 {
+            margin-left: 4rem; /* Add margin to account for fixed sidebar */
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Stack header elements on smaller screens */
+                gap: 1rem;
+            }
+            .create-post-buttons {
+                flex-wrap: wrap; /* Wrap buttons on smaller screens */
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flex flex-col md:flex-row">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <i class="fas fa-cog sidebar-icon"></i>
+            <i class="fas fa-plus-circle sidebar-icon"></i>
+            <i class="fas fa-calendar-alt sidebar-icon"></i>
+            <i class="fas fa-bell sidebar-icon"></i>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 p-4">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-profile">
+                    <img src="https://storage.googleapis.com/a1aa/image/spJncrHfEU2DiBTJgaxKjC7pVitlBTEdjzyii734G8c.jpg" alt="User profile picture" />
+                    <span class="text-xl font-bold">Clover Peace</span>
+                </div>
+                <i class="fas fa-search text-2xl"></i>
+            </div>
+            <!-- Create Post Section -->
+            <div class="create-post">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/a1aa/image/spJncrHfEU2DiBTJgaxKjC7pVitlBTEdjzyii734G8c.jpg" alt="User profile picture" class="w-12 h-12 mr-4" />
+                    <input type="text" placeholder="CREATE" />
+                </div>
+                <div class="flex justify-between create-post-buttons mb-4">
+                    <button><i class="fas fa-image mr-2"></i> Image</button>
+                    <button><i class="fas fa-poll mr-2"></i> Poll</button>
+                    <button><i class="fas fa-question-circle mr-2"></i> Quiz</button>
+                    <button><i class="fas fa-video mr-2"></i> Video</button>
+                    <button><i class="fas fa-file-alt mr-2"></i> File</button>
+                    <button><i class="fas fa-users mr-2"></i> Group</button>
+                </div>
+                <div class="flex justify-between">
+                    <button class="bg-gray-200 text-gray-500 px-4 py-2 rounded-lg">Cancel</button>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Post</button>
+                </div>
+            </div>
+            <!-- Post Section -->
+            <div class="post">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/a1aa/image/spJncrHfEU2DiBTJgaxKjC7pVitlBTEdjzyii734G8c.jpg" alt="User profile picture" class="w-12 h-12 mr-4" />
+                    <div>
+                        <span class="font-bold">Learn the Basics (HTML)</span>
+                        <div class="text-gray-500">From Beginner Pro</div>
+                    </div>
+                </div>
+                <img src="https://storage.googleapis.com/a1aa/image/jCVKde4UZDcfl6tss77peRauHNK01_Ct45c2ZsqXEw4.jpg" alt="HTML basics image" />
+                <div class="flex justify-between text-gray-500 mb-4">
+                    <span>800 Views</span>
+                    <span>651 Likes</span>
+                </div>
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/a1aa/image/spJncrHfEU2DiBTJgaxKjC7pVitlBTEdjzyii734G8c.jpg" alt="User profile picture" class="w-8 h-8 mr-2" />
+                    <span>Excellent teaching</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </span>
+                </div>
+            </div>
+            <!-- Placeholder for recent posts -->
+            <div class="recent-posts">
+                Your recent posts will appear here
+            </div>
+        </div>
+    </div>
+</body>
+</html>

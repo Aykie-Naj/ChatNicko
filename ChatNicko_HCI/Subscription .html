@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Subscription</title>
+    <style>
+        body {
+            background-color: #f9fafb; /* Lighter background for better contrast */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #111827; /* Darker text for readability */
+        }
+        .flex {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Full height for layout */
+        }
+        @media (min-width: 768px) {
+            .flex {
+                flex-direction: row; /* Row layout for larger screens */
+            }
+        }
+        .sidebar {
+            background-color: #1f2937; /* Darker sidebar for better contrast */
+            color: #ffffff;
+            width: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 1.5rem;
+            height: 100vh; /* Ensure full height of the viewport */
+            position: fixed; /* Fix sidebar position */
+            top: 0;
+            left: 0;
+        }
+        .sidebar i {
+            font-size: 1.5rem; /* Slightly larger icons for better visibility */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .sidebar i:hover {
+            color: #60a5fa; /* Softer hover effect */
+        }
+        .sidebar img {
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+        }
+        .main-content {
+            margin-left: 4rem; /* Add margin to account for fixed sidebar */
+            padding: 2rem; /* Increased padding for better spacing */
+            overflow-y: auto; /* Ensure content is scrollable */
+        }
+        .subscription-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .subscription-card h1 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .subscription-card p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        .subscription-card form label {
+            display: block;
+            font-size: 0.875rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+        .subscription-card form input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .subscription-card form input:focus {
+            border-color: #60a5fa; /* Highlight input on focus */
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+        }
+        .subscription-card form .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .subscription-card form button {
+            background-color: #3b82f6;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .subscription-card form button:hover {
+            background-color: #2563eb;
+        }
+        .chat-sidebar {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 16rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: 4rem; /* Adjust for fixed sidebar */
+            margin-top: 2rem;
+        }
+        @media (min-width: 768px) {
+            .chat-sidebar {
+                margin-top: 0;
+            }
+        }
+        .chat-sidebar h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        .chat-sidebar button {
+            background-color: #10b981;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .chat-sidebar button:hover {
+            background-color: #059669;
+        }
+        .chat-sidebar ul {
+            color: #6b7280;
+            font-size: 0.875rem;
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .flex {
+                flex-direction: column; /* Stack layout on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <i>&#8962;</i>
+            <i>&#9881;</i>
+            <i>&#8853;</i>
+            <i>&#128197;</i>
+            <i>&#9993;</i>
+            <img src="https://storage.googleapis.com/a1aa/image/tiJW9D5RUObGCavaWX6RWr-4UJfSJZ5_g-8nm2WaUFs.jpg" alt="User profile picture" />
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="subscription-card">
+                <h1>Start your free 7 days</h1>
+                <p>No commitment. Cancel anytime.</p>
+                <form>
+                    <label>Card Number</label>
+                    <input type="text" placeholder="Enter your card number" />
+                    <label>Expiration Date</label>
+                    <input type="text" placeholder="MM/YY" />
+                    <label>Security Code</label>
+                    <input type="text" placeholder="CVC" />
+                    <label>Country</label>
+                    <input type="text" placeholder="Enter your country" />
+                    <label>Select Payment Method</label>
+                    <div class="payment-method">
+                        <input type="radio" name="payment" />
+                        <img src="https://storage.googleapis.com/a1aa/image/fO7682IYOxVRvM3WNYqaclRdk11SBPW5zCvhl05yHRo.jpg" alt="PayPal logo" width="40" height="20" />
+                    </div>
+                    <button type="submit">Join</button>
+                </form>
+                <p>Secured with SSL</p>
+            </div>
+        </main>
+        <!-- Chat Sidebar -->
+        <aside class="chat-sidebar">
+            <h2>Chat Nicko</h2>
+            <button>Start Your 7-Day Free Trial</button>
+            <ul>
+                <li>Cancel anytime</li>
+                <li>You won't be charged if you cancel before March 8, 2025</li>
+            </ul>
+        </aside>
+    </div>
+</body>
+</html>
